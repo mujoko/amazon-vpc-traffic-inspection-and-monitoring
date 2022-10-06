@@ -1,6 +1,6 @@
 locals {
   aws_region  = "us-west-2"
-  prefix      = "amazon-vpc-traffic-mirroring"
+  prefix      = "aws-ecv-vpc-traffic-mirroring"
   common_tags = {
     Project         = local.prefix
     ManagedBy       = "Terraform"

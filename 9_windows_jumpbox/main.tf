@@ -12,15 +12,15 @@ data "terraform_remote_state" "base" {
 locals {
   aws_account_id = data.aws_caller_identity.current.account_id
   aws_region  = "us-west-2"
-  prefix      = "amazon-vpc-traffic-mirroring"
+  prefix      = "aws-ecv-vpc-traffic-mirroring"
   common_tags = {
     Project         = local.prefix
     ManagedBy       = "Terraform"
   }
-  remote_state_bucket   = "hands-on-cloud-terraform-remote-state-s3"
+  remote_state_bucket   = "ecv-demo-terraform-remote-state-s3"
   base_state_file       = "amazon-vpc-traffic-monitoring-base.tfstate"
-  windows_instance_ami  = "ami-058b12f51d412b5db"
-  ssh_key_name          = "Lenovo-T410"
+  windows_instance_ami  = "ami-0df583d5f9d8e6cda"
+  ssh_key_name          = "demo_surikata"
 }
 
 locals {
@@ -124,7 +124,7 @@ resource "aws_instance" "ec2_windows_jumpbox" {
 <powershell>
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 choco feature enable -n=allowGlobalConfirmation
-choco install googlechrome
+choco install googlechrome --ignore-checksums
 </powershell>
 EOF
 

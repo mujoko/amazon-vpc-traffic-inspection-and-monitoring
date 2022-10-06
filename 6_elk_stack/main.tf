@@ -12,7 +12,7 @@ data "terraform_remote_state" "base" {
 locals {
   aws_account_id = data.aws_caller_identity.current.account_id
   aws_region  = "us-west-2"
-  prefix      = "amazon-vpc-traffic-mirroring"
+  prefix      = "aws-ecv-vpc-traffic-mirroring"
   elk_stack_version     = "7.10"
   elk_stack_volume_size = 10
   elk_stack_volume_type = "gp2"
@@ -21,7 +21,7 @@ locals {
     Project         = local.prefix
     ManagedBy       = "Terraform"
   }
-  remote_state_bucket   = "hands-on-cloud-terraform-remote-state-s3"
+  remote_state_bucket   = "ecv-demo-terraform-remote-state-s3"
   base_state_file       = "amazon-vpc-traffic-monitoring-base.tfstate"
   vpc_id                = data.terraform_remote_state.base.outputs.vpc_id
   elk_domain            = "suricata"

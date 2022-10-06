@@ -21,12 +21,12 @@ data "terraform_remote_state" "suricata" {
 locals {
   aws_account_id = data.aws_caller_identity.current.account_id
   aws_region  = "us-west-2"
-  prefix      = "amazon-vpc-traffic-mirroring"
+  prefix      = "aws-ecv-vpc-traffic-mirroring"
   common_tags = {
     Project         = local.prefix
     ManagedBy       = "Terraform"
   }
-  remote_state_bucket   = "hands-on-cloud-terraform-remote-state-s3"
+  remote_state_bucket   = "ecv-demo-terraform-remote-state-s3"
   base_state_file       = "amazon-vpc-traffic-monitoring-base.tfstate"
   suricata_state_file   = "amazon-vpc-traffic-monitoring-suricata.tfstate"
   flow_logs_table_name  = "vpc_flow_logs"

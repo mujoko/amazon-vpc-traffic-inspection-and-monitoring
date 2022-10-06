@@ -12,12 +12,12 @@ data "terraform_remote_state" "base" {
 locals {
   aws_account_id = data.aws_caller_identity.current.account_id
   aws_region  = "us-west-2"
-  prefix      = "amazon-vpc-traffic-mirroring"
+  prefix      = "aws-ecv-vpc-traffic-mirroring"
   common_tags = {
     Project         = local.prefix
     ManagedBy       = "Terraform"
   }
-  remote_state_bucket   = "hands-on-cloud-terraform-remote-state-s3"
+  remote_state_bucket   = "ecv-demo-terraform-remote-state-s3"
   base_state_file       = "amazon-vpc-traffic-monitoring-base.tfstate"
   flow_logs_table_name  = "vpc_flow_logs"
   flow_logs_s3_bucket_arn = data.terraform_remote_state.base.outputs.logging_s3_bucket_arn

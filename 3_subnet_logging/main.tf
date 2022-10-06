@@ -1,11 +1,11 @@
 locals {
   aws_region  = "us-west-2"
-  prefix      = "amazon-vpc-traffic-mirroring"
+  prefix      = "aws-ecv-vpc-traffic-mirroring"
   common_tags = {
     Project         = local.prefix
     ManagedBy       = "Terraform"
   }
-  remote_state_bucket = "hands-on-cloud-terraform-remote-state-s3"
+  remote_state_bucket = "ecv-demo-terraform-remote-state-s3"
   base_state_file      = "amazon-vpc-traffic-monitoring-base.tfstate"
 }
 

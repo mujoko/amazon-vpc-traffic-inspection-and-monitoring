@@ -1,9 +1,9 @@
 locals {
     aws_region  = "us-west-2"
-    prefix      = "hands-on-cloud-terraform-remote-state"
-    ssm_prefix  = "/org/hands-on-cloud/terraform"
+    prefix      = "ecv-demo-terraform-remote-state"
+    ssm_prefix  = "/com/ecv-demo/terraform"
     common_tags = {
-        Project         = "hands-on-cloud"
+        Project         = "ecv-demo"
         ManagedBy       = "Terraform"
     }
 }

@@ -21,7 +21,7 @@ data "terraform_remote_state" "elk" {
 locals {
   aws_account_id = data.aws_caller_identity.current.account_id
   aws_region  = "us-west-2"
-  prefix      = "amazon-vpc-traffic-mirroring"
+  prefix      = "aws-ecv-vpc-traffic-mirroring"
   suricata_ec2_volume_size = 30
   suricata_ec2_volume_type = "gp3"
   suricata_ec2_volume_encryption = true
@@ -30,7 +30,7 @@ locals {
     Project         = local.prefix
     ManagedBy       = "Terraform"
   }
-  remote_state_bucket   = "hands-on-cloud-terraform-remote-state-s3"
+  remote_state_bucket   = "ecv-demo-terraform-remote-state-s3"
   base_state_file       = "amazon-vpc-traffic-monitoring-base.tfstate"
   elk_state_file        = "amazon-vpc-traffic-monitoring-elk.tfstate"
   es_version            = "${data.terraform_remote_state.elk.outputs.es_version}.0"
